@@ -4,7 +4,7 @@ import {MovieModule} from './movie/movie.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://kokdemir:5rniLWUnB9mWoXpE@cluster0.u4t61.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'),
+    MongooseModule.forRoot('mongodb+srv://kokdemir:5rniLWUnB9mWoXpE@cluster0.u4t61.mongodb.net/netflix?retryWrites=true&w=majority'),
     MovieModule
   ]
 })
