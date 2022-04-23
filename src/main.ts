@@ -2,11 +2,12 @@ import {NestFactory} from '@nestjs/core';
 import {AppModule} from './app.module';
 import {SwaggerModule, DocumentBuilder} from '@nestjs/swagger';
 import helmet from "helmet";
-
-const PORT = 3000
+import {ConfigService} from "@nestjs/config";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const configService = app.get(ConfigService);
+  const PORT = configService.get('PORT');
 
   //Swagger Docs
   const config = new DocumentBuilder()
@@ -25,5 +26,5 @@ async function bootstrap() {
 }
 
 bootstrap().then(() => {
-  console.log(`http://127.0.0.1:${PORT}`)
+  console.log('listening...')
 });
