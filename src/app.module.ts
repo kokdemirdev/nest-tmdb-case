@@ -2,7 +2,6 @@ import {Module} from '@nestjs/common';
 import {MongooseModule} from "@nestjs/mongoose";
 import {MovieModule} from './movie/movie.module';
 import {ScheduleModule} from "@nestjs/schedule";
-import { MovieFetcherService } from './movie-fetcher/movie-fetcher.service';
 import {HttpModule} from "@nestjs/axios";
 
 @Module({
@@ -11,8 +10,7 @@ import {HttpModule} from "@nestjs/axios";
     ScheduleModule.forRoot(),
     MovieModule,
     HttpModule
-  ],
-  providers: [MovieFetcherService]
+  ]
 })
 export class AppModule {
 }

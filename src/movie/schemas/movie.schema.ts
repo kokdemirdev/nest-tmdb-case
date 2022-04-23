@@ -9,6 +9,10 @@ export type MovieDocument = Movie & Document;
 export class Movie {
   @Prop()
   @ApiProperty()
+  remote_id: number;
+
+  @Prop()
+  @ApiProperty()
   name: string;
 
   @Prop()

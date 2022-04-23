@@ -24,4 +24,8 @@ export class MovieService {
   remove(id: string) {
     return this.movieModel.findByIdAndDelete(id);
   }
+
+  removeAll() {
+    return this.movieModel.deleteMany()
+  }
 }
