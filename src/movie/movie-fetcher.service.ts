@@ -12,7 +12,7 @@ export class MovieFetcherService {
   constructor(private httpService: HttpService, private readonly movieService: MovieService) {}
 
   @Cron(CronExpression.EVERY_5_MINUTES)
-  async handleCron() {
+  async syncMoviesWithTMDB() {
     const params = {
       'sort_by': 'release_date.asc',
       'vote_count.gte': 1500,
@@ -28,9 +28,9 @@ export class MovieFetcherService {
         const movie = await this.fetchMovieById(id)
         await this.movieService.create(movie)
       }
-      console.log(1)
+      console.log('cron is finished')
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }
 
