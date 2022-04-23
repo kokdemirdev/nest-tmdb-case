@@ -5,6 +5,7 @@ import {ScheduleModule} from "@nestjs/schedule";
 import {HttpModule} from "@nestjs/axios";
 import {ConfigModule, ConfigService} from "@nestjs/config";
 import * as Joi from "joi"
+import {ThrottlerModule} from "@nestjs/throttler";
 
 const configSchema = Joi.object({
   PORT: Joi.number().default(3000),
@@ -25,6 +26,10 @@ const configSchema = Joi.object({
       inject: [ConfigService]
     }),
     ScheduleModule.forRoot(),
+    ThrottlerModule.forRoot({
+      ttl: 60,
+      limit: 10,
+    }),
     MovieModule,
     HttpModule
   ]
