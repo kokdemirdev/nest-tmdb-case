@@ -1,7 +1,7 @@
 import {NestFactory} from '@nestjs/core';
 import {AppModule} from './app.module';
 import {SwaggerModule, DocumentBuilder} from '@nestjs/swagger';
-import * as helmet from "helmet"
+import helmet from "helmet";
 
 const PORT = 3000
 
@@ -19,7 +19,7 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   //Helmet
-  app.use(helmet)
+  app.use(helmet())
 
   await app.listen(PORT);
 }
